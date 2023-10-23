@@ -24,7 +24,7 @@ const handleSubmit = (event) => {
         router.push('/dashboard');
       } else {
         alert('User successfully login...!!')
-        router.push('/');
+        router.push('/home');
       }
       
     })

@@ -1,4 +1,6 @@
-import React from 'react';
+import React from 'react'
+import axios from "axios";
+import { useRouter } from 'next/router';
 import MainHeader from './MainHeader';
 import { GrArticle } from 'react-icons/gr';
 import { FaAngleRight } from 'react-icons/fa';
@@ -12,6 +14,8 @@ import DashboardContent from './DashboardContent';
 const MainLayout = ({ children }) => {
   const [showdashboard, setShowDashboard] = useState(true);
   const [showAddArticle, setShowAddArticle] = useState(false);
+
+  const router = useRouter();
 
   const handleDashboardClick = () => {
     setShowDashboard(true);
@@ -31,6 +35,14 @@ const MainLayout = ({ children }) => {
     }
      
   }
+
+  const handleLogout = () => {
+    axios.post('http://localhost:5000/auth/userlogout')
+    .then(res => {
+        alert('Logout successfully...!!')
+        router.push('/');
+    }).catch(err => console.log(err));
+}
 
   return (
     <div className='bg-gray-200 w-screen min-h-screen'>
@@ -73,7 +85,7 @@ const MainLayout = ({ children }) => {
                             </div> */}
                         </ul>
                     </li>
-                    <li className='flex justify-start items-center hover:bg-blue-200 hover:text-blue-800 rounded-xl p-2 cursor-pointer'>
+                    <li onClick={handleLogout} className='flex justify-start items-center hover:bg-blue-200 hover:text-blue-800 rounded-xl p-2 cursor-pointer'>
                         <BiLogOutCircle className='mr-2'/>
                         <h3 className='flex-1 font-semibold text-lg'>Logout</h3>
                     </li>

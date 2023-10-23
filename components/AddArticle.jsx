@@ -6,12 +6,18 @@ const Addarticle = () => {
         title: '',
         description: '',
         content: '',
-        authorname: ''
+        authorname: '',
+        image: null,
+
     })
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/article/createarticle', data)
+        axios.post('http://localhost:5000/article/createarticle', data, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
         .then(res => {
           console.log(res)
           alert('Record added successfully...!!')
@@ -19,7 +25,8 @@ const Addarticle = () => {
             title: '',
             description: '',
             content: '',
-            authorname: ''
+            authorname: '',
+            image: null,
         })
         
         })
@@ -48,7 +55,7 @@ const Addarticle = () => {
               placeholder="Enter title"
             />
           </div>
-          {/* <div className="mb-4">
+          <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="image"
@@ -60,10 +67,10 @@ const Addarticle = () => {
             id="image"
             type="file"
             name="image"
-            value={formData.image}
-            onChange={handleChange}
+            value={data.image}
+            onChange={(e) => setData({ ...data, image: e.target.files[0] })}
           />
-        </div> */}
+        </div>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"

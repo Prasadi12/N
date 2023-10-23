@@ -21,6 +21,7 @@ const Addarticle = () => {
             content: '',
             authorname: ''
         })
+        window.location.reload(true);
         })
         .catch(err => console.log(err));
     }

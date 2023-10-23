@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import { useRouter } from "next/router";
 
-const Card = ({ title, description }) => {
+const Card = () => {
   const [data, setData] = useState([]);
 
   useEffect(()=> {
@@ -22,7 +23,7 @@ const Card = ({ title, description }) => {
               <p className="text-gray-700 text-base">{article.description}</p>
             </div>
             <div className="mt-4">
-              <a href={`/article`} className="block text-center text-cyan-600 hover:text-cyan-700">
+              <a href={`/article/${article._id}`} className="block text-center text-cyan-600 hover:text-cyan-700">
                 More Details
               </a>
             </div>

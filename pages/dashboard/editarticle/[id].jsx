@@ -47,12 +47,14 @@ const Editarticle = () => {
       .then((res) => {
         console.log(res);
         alert('Record updated successfully...!!')
+        window.location.reload(true);
         setData({
           title: '',
           description: '',
           content: '',
           authorname: ''
       })
+      
       })
       .catch((err) => console.log(err));
   };

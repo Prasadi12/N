@@ -28,11 +28,6 @@ const DashboardContent = () => {
         console.log(res);
         alert('Record deleted successfully')
         window.location.reload(true);
-      // if(res.data.Status === "Success") {
-      //   window.location.reload(true);
-      // } else {
-      //   alert("Error")
-      // }
       }
     )
     .catch(err => console.log(err));

@@ -5,8 +5,7 @@ import React from 'react'
 const dashboard = () => {
 
   return (
-    <MainLayout/>
-            
+    <MainLayout/>           
   )
 }
 

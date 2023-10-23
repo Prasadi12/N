@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from "axios";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import { useRouter } from 'next/router';
 
 const Register = () => {
     const [data,setData] = useState({
@@ -11,13 +12,15 @@ const Register = () => {
         username: '',
         password: ''
     })
+    const router = useRouter();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:5000/auth/createuser', data)
 		.then(res => {
 			console.log(res)
-            console.log('dataa',data)
+      alert('Registration successfully...!!')
+      router.push('/login');
 		})
 		.catch(err => console.log(err));
     }

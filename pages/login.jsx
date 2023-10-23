@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useRouter } from 'next/router';
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
@@ -9,6 +10,7 @@ const Login = () => {
     username: '',
     password: ''
 })
+const router = useRouter();
 
 // axios.defaults.withCredentials = true;
 
@@ -16,9 +18,20 @@ const handleSubmit = (event) => {
     event.preventDefault();
     axios.post('http://localhost:5000/auth/userlogin', values)
     .then(res => {
-      alert('Successfully login...!!')
+      console.log(res)
+      if(res.data.role == 'admin'){
+        alert('Admin successfully login...!!')
+        router.push('/dashboard');
+      } else {
+        alert('User successfully login...!!')
+        router.push('/');
+      }
+      
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err)
+      alert('Login Failed...!!')
+    });
 }
   return (
     <div>

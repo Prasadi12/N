@@ -31,6 +31,7 @@ const Editarticle = () => {
           content: res.data.content,
           authorname: res.data.authorname,
         });
+        
       })
       .catch((err) => {
         console.log(err)
@@ -47,13 +48,7 @@ const Editarticle = () => {
       .then((res) => {
         console.log(res);
         alert('Record updated successfully...!!')
-        window.location.reload(true);
-        setData({
-          title: '',
-          description: '',
-          content: '',
-          authorname: ''
-      })
+        router.push('/dashboard');
       
       })
       .catch((err) => console.log(err));

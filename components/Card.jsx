@@ -7,7 +7,7 @@ const Card = ({ title, description }) => {
   useEffect(()=> {
     axios.get('http://localhost:5000/article/')
     .then(res => {
-      setData(res.data.slice(0, 6)); // Slice the array to get the first six articles
+      setData(res.data); // Slice the array to get the first six articles
     })
     .catch(err => console.log(err));
   }, []);

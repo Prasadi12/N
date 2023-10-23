@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { AiFillDelete,AiFillEdit } from "react-icons/ai";
 import { BiShow } from "react-icons/bi";
 
 const DashboardContent = () => {
   const [data, setData] = useState([])
+
+  const router = useRouter();
+  const { id } = router.query;
 
   useEffect(()=> {
     axios.get('http://localhost:5000/article/')
@@ -14,17 +18,23 @@ const DashboardContent = () => {
       setData(res.data); // Assuming the response data is an array
     })
     .catch(err => console.log(err));
-  }, [])
+  }, [id])
 
   const handleDelete = (id) => {
-    axios.delete('http://localhost:5000/article/deletearticle/${id}')
-    .then(res => {
-      if(res.data.Status === "Success") {
+    console.log(id);
+    axios
+      .delete(`http://localhost:5000/article/deletearticle/${id}`)
+      .then(res => {
+        console.log(res);
+        alert('Record deleted successfully')
         window.location.reload(true);
-      } else {
-        alert("Error")
+      // if(res.data.Status === "Success") {
+      //   window.location.reload(true);
+      // } else {
+      //   alert("Error")
+      // }
       }
-    })
+    )
     .catch(err => console.log(err));
   }
   
@@ -70,7 +80,7 @@ const DashboardContent = () => {
                 <Link href={`/dashboard/showarticle/${article._id}`}><BiShow  style={{fontSize:'20px'}}/></Link>
                 </div>
                 <div>
-                  <AiFillDelete  style={{fontSize:'20px'}}/> 
+                  <AiFillDelete onClick={() => handleDelete(article._id)} style={{fontSize:'20px'}}/> 
                 </div>
               </td>
             </tr>

@@ -5,10 +5,41 @@ import { FaAngleRight } from 'react-icons/fa';
 import { BiLogOutCircle,BiAddToQueue,BiShow } from 'react-icons/bi';
 import { RxDashboard } from 'react-icons/rx';
 import Link from "next/link";
+import axios from "axios";
+import { useRouter } from "next/router";
 // import { useParams } from 'react-router-dom';
 // import axios from "axios";
 
 const Showarticle = () => {
+  const [data, setData] = useState({
+    title: "",
+    description: "",
+    content: "",
+    authorname: "",
+  });
+  
+  const router = useRouter();
+  const { id } = router.query;
+
+  useEffect(() => {
+    if (id) {
+    axios
+      .get("http://localhost:5000/article/getarticle/" + id)
+      .then((res) => {
+        console.log(res);
+        setData({
+          title: res.data.title,
+          description: res.data.description,
+          content: res.data.content,
+          authorname: res.data.authorname,
+        });
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+    }
+  }, [id]);
+
   return (
     <div className='bg-gray-200 w-screen min-h-screen'>
         <MainHeader/>
@@ -73,10 +104,11 @@ const Showarticle = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="title"
             type="text"
+            value={data.title}
             placeholder="Enter title"
           />
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="image"
@@ -88,7 +120,7 @@ const Showarticle = () => {
             id="image"
             type="file"
           />
-        </div>
+        </div> */}
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -100,6 +132,7 @@ const Showarticle = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="description"
             type="text"
+            value={data.description}
             placeholder="Enter description"
           />
         </div>
@@ -114,6 +147,7 @@ const Showarticle = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="content"
             type="text"
+            value={data.content}
             placeholder="Enter content"
           />
         </div>
@@ -128,10 +162,11 @@ const Showarticle = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="authorname"
             type="text"
+            value={data.authorname}
             placeholder="Enter authorname"
           />
         </div>
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="publishdate"
@@ -143,7 +178,7 @@ const Showarticle = () => {
             id="publishdate"
             type="date"
           />
-        </div>
+        </div> */}
       </form>
     </div>
         </main>

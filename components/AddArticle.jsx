@@ -14,6 +14,13 @@ const Addarticle = () => {
         axios.post('http://localhost:5000/article/createarticle', data)
         .then(res => {
           console.log(res)
+          alert('Record added successfully...!!')
+          setData({
+            title: '',
+            description: '',
+            content: '',
+            authorname: ''
+        })
         })
         .catch(err => console.log(err));
     }
@@ -35,6 +42,7 @@ const Addarticle = () => {
               type="text"
               name="title"
               required
+              value={data.title}
               onChange={(e) => setData({ ...data, title: e.target.value })}
               placeholder="Enter title"
             />
@@ -68,7 +76,7 @@ const Addarticle = () => {
               type="text"
               required
               name="description"
-            //   value={formData.description}
+              value={data.description}
             //   onChange={handleChange}
               onChange={(e) => setData({ ...data, description: e.target.value })}
               placeholder="Enter description"
@@ -87,7 +95,7 @@ const Addarticle = () => {
               type="text"
               name="content"
               required
-            //   value={formData.content}
+              value={data.content}
             //   onChange={handleChange}
               onChange={(e) => setData({ ...data, content: e.target.value })}
               placeholder="Enter content"
@@ -106,7 +114,7 @@ const Addarticle = () => {
               type="text"
               name="authorname"
               required
-            //   value={formData.authorname}
+              value={data.authorname}
             //   onChange={handleChange}
               onChange={(e) => setData({ ...data, authorname: e.target.value })}
               placeholder="Enter authorname"

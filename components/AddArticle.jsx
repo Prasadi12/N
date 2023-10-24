@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import RichTextEditor from './Conent'
 import axios from "axios";
 
 const Addarticle = () => {
@@ -91,7 +92,8 @@ const Addarticle = () => {
             >
               Content
             </label>
-            <input
+            <RichTextEditor  theme="snow" />
+            {/* <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="content"
               type="text"
@@ -101,7 +103,7 @@ const Addarticle = () => {
             //   onChange={handleChange}
               onChange={(e) => setData({ ...data, content: e.target.value })}
               placeholder="Enter content"
-            />
+            /> */}
           </div>
           <div className="mb-4">
             <label

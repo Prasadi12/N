@@ -7,6 +7,7 @@ import Footer from "../../components/Footer";
 
 const Article = () => {
   const [data, setData] = useState([]);
+  const [test,setTest] = useState({comment: ''})
   const router = useRouter();
   const { id } = router.query;
 
@@ -21,6 +22,17 @@ const Article = () => {
         .catch((err) => console.log(err));
     }
   }, [id]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:5000/article/createcomment', test)
+    .then(res => {
+      console.log(res)
+      alert('Comment send successfully...!!')
+      window.location.reload(true);
+    })
+    .catch(err => console.log(err));
+}
 
   return (
     <div>
@@ -39,10 +51,13 @@ const Article = () => {
               </div>
 
               <div className="mt-8 max-w-md">
-                <form className="flex items-center">
+                <form onSubmit={handleSubmit} className="flex items-center">
                   <input
                     type="text"
+                    name="comment"
                     placeholder="Write a comment..."
+                    // value={test.comment}
+                    onChange={(e) => setTest({ ...test, comment: e.target.value })}
                     className="w-full border rounded-l-lg py-2 px-4"
                   />
                   <button

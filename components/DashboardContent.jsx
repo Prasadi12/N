@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { AiFillDelete,AiFillEdit } from "react-icons/ai";
@@ -51,7 +52,19 @@ const DashboardContent = () => {
               scope="col"
               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
             >
+              Image
+            </th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
               AuthorName
+            </th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              PublishDate
             </th>
             <th
               scope="col"
@@ -65,7 +78,11 @@ const DashboardContent = () => {
           {data.map((article) => (
             <tr key={article.id}>
               <td className="px-6 py-4 whitespace-nowrap">{article.title}</td>
+              <td>{
+                    <Image src={'http://localhost:5000/'+article.image} width={100} height={100} alt=""/>
+                    }</td>
               <td className="px-6 py-4 whitespace-nowrap">{article.authorname}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{article.publishdate}</td>
               <td className="px-4 py-4 whitespace-nowrap flex cursor-pointer">
                 <div className="mr-2">
                   <Link href={`/dashboard/editarticle/${article._id}`}><AiFillEdit  style={{fontSize:'20px'}}/></Link>

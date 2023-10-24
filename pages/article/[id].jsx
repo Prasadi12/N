@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/router";
 import NavBar from "../../components/NavBar";
@@ -31,7 +32,7 @@ const Article = () => {
               <h1 className="text-3xl font-bold">{data.title}</h1>
               <p className="mt-3 text-2xl">{data.description}</p>
               <div className="mt-5">
-                {/* <img className="rounded-lg" src="https://via.placeholder.com/800x400" alt="Article" /> */}
+              <Image src={'http://localhost:5000/'+data.image} alt="" width={500} height={500}/>
               </div>
               <div className="mt-5 text-left max-w-2xl">
                 <p className="text-xl">{data.content}</p>

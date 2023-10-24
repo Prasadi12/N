@@ -25,14 +25,14 @@ const Article = () => {
   return (
     <div>
       <NavBar />
-          <div
-            className="flex flex-col items-center justify-center py-2"
-          >
-            <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-              <h1 className="text-3xl font-bold">{data.title}</h1>
-              <p className="mt-3 text-2xl">{data.description}</p>
-              <div className="mt-5">
-              <Image src={'http://localhost:5000/'+data.image} alt="" width={500} height={500}/>
+          <div className="flex flex-col py-2">
+            <main className="flex flex-col w-full flex-1 px-20">
+              <h1 className="text-3xl justify-center font-bold">{data.title}</h1>
+              <p className="text-xl justify-start font-bold">Author: {data.authorname}</p>
+              <p className="text-xl font-bold">Published Data :{data.publishdate}</p>
+              {/* <p className="mt-3 text-2xl">{data.description}</p> */}
+              <div className="mt-5 justify-center">
+              <Image src={'http://localhost:5000/'+'images/'+data.image} alt="" width={500} height={500}/>
               </div>
               <div className="mt-5 text-left max-w-2xl">
                 <p className="text-xl">{data.content}</p>

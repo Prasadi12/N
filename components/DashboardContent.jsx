@@ -79,7 +79,7 @@ const DashboardContent = () => {
             <tr key={article.id}>
               <td className="px-6 py-4 whitespace-nowrap">{article.title}</td>
               <td>{
-                    <Image src={'http://localhost:5000/'+article.image} width={100} height={100} alt=""/>
+                    <Image src={'http://localhost:5000/'+'images/'+article.image} width={100} height={100} alt=""/>
                     }</td>
               <td className="px-6 py-4 whitespace-nowrap">{article.authorname}</td>
               <td className="px-6 py-4 whitespace-nowrap">{article.publishdate}</td>

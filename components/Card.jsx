@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const Card = () => {
   const [data, setData] = useState([]);
@@ -20,6 +21,7 @@ const Card = () => {
           <div className="flex flex-col justify-between h-full">
             <div>
               <div className="font-bold text-xl mb-4">{article.title}</div>
+              <Image src={'http://localhost:5000/'+article.image} alt="" width={500} height={500}/>
               <p className="text-gray-700 text-base">{article.description}</p>
             </div>
             <div className="mt-4">

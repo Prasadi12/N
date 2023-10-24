@@ -1,5 +1,6 @@
 import MainHeader from "@/components/MainHeader";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { GrArticle } from "react-icons/gr";
 import { FaAngleRight } from "react-icons/fa";
 import { BiLogOutCircle, BiAddToQueue } from "react-icons/bi";
@@ -14,6 +15,8 @@ const Editarticle = () => {
     description: "",
     content: "",
     authorname: "",
+    image: null,
+    publishdate: '',
   });
 
   const router = useRouter();
@@ -25,12 +28,7 @@ const Editarticle = () => {
       .get("http://localhost:5000/article/getarticle/" + id)
       .then((res) => {
         console.log(res);
-        setData({
-          title: res.data.title,
-          description: res.data.description,
-          content: res.data.content,
-          authorname: res.data.authorname,
-        });
+        setData(res.data);
         
       })
       .catch((err) => {
@@ -44,7 +42,11 @@ const Editarticle = () => {
     event.preventDefault();
     console.log(id);
     axios
-      .put(`http://localhost:5000/article/updatearticle/${id}`, data)
+      .put(`http://localhost:5000/article/updatearticle/${id}`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         console.log(res);
         alert('Record updated successfully...!!')
@@ -124,19 +126,22 @@ const Editarticle = () => {
                   placeholder="Enter title"
                 />
               </div>
-              {/* <div className="mb-4">
+              <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="image"
           >
             Image
           </label>
+          <Image src={'http://localhost:5000/images/'+data.image} width={500} height={500}/>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="image"
             type="file"
+            name="image"
+            onChange={(e) => setData({ ...data, image: e.target.files[0] })}
           />
-        </div> */}
+        </div>
               <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
@@ -197,7 +202,7 @@ const Editarticle = () => {
                   placeholder="Enter authorname"
                 />
               </div>
-              {/* <div className="mb-6">
+              <div className="mb-6">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="publishdate"
@@ -208,8 +213,11 @@ const Editarticle = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="publishdate"
             type="date"
+            name="publishdate"
+            value={data.publishdate}
+            onChange={(e) => setData({ ...data, publishdate: e.target.value })}
           />
-        </div> */}
+        </div>
               <div className="flex items-center justify-between">
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

@@ -1,5 +1,6 @@
 import MainHeader from "@/components/MainHeader";
 import React, { useState,useEffect } from "react";
+import Image from "next/image";
 import { GrArticle } from 'react-icons/gr';
 import { FaAngleRight } from 'react-icons/fa';
 import { BiLogOutCircle,BiAddToQueue,BiShow } from 'react-icons/bi';
@@ -16,6 +17,8 @@ const Showarticle = () => {
     description: "",
     content: "",
     authorname: "",
+    image: null,
+    publishdate: '',
   });
   
   const router = useRouter();
@@ -27,12 +30,7 @@ const Showarticle = () => {
       .get("http://localhost:5000/article/getarticle/" + id)
       .then((res) => {
         console.log(res);
-        setData({
-          title: res.data.title,
-          description: res.data.description,
-          content: res.data.content,
-          authorname: res.data.authorname,
-        });
+        setData(res.data);
       })
       .catch((err) => {
         console.log(err)
@@ -104,23 +102,20 @@ const Showarticle = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="title"
             type="text"
+            readOnly
             value={data.title}
             placeholder="Enter title"
           />
         </div>
-        {/* <div className="mb-4">
+        <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="image"
           >
             Image
           </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="image"
-            type="file"
-          />
-        </div> */}
+          <Image src={'http://localhost:5000/images/'+data.image} width={500} height={500}/>
+        </div>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -132,6 +127,7 @@ const Showarticle = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="description"
             type="text"
+            readOnly
             value={data.description}
             placeholder="Enter description"
           />
@@ -147,6 +143,7 @@ const Showarticle = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="content"
             type="text"
+            readOnly
             value={data.content}
             placeholder="Enter content"
           />
@@ -162,11 +159,12 @@ const Showarticle = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="authorname"
             type="text"
+            readOnly
             value={data.authorname}
             placeholder="Enter authorname"
           />
         </div>
-        {/* <div className="mb-6">
+        <div className="mb-6">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="publishdate"
@@ -176,9 +174,13 @@ const Showarticle = () => {
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="publishdate"
-            type="date"
+            type="text"
+            readOnly
+            name="publishdate"
+            value={data.publishdate}
+            onChange={(e) => setData({ ...data, publishdate: e.target.value })}
           />
-        </div> */}
+        </div>
       </form>
     </div>
         </main>

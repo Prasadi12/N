@@ -44,7 +44,7 @@ const Article = () => {
               <p className="text-xl font-bold">Published Data :{data.publishdate}</p>
               {/* <p className="mt-3 text-2xl">{data.description}</p> */}
               <div className="mt-5 justify-center">
-              <Image src={'http://localhost:5000/'+'images/'+data.image} alt="" width={500} height={500}/>
+              <Image src={'http://localhost:5000/images/'+data.image} alt="" width={500} height={500}/>
               </div>
               <div className="mt-5 text-left max-w-2xl">
                 <p className="text-xl">{data.content}</p>

@@ -135,7 +135,6 @@ const Addarticle = () => {
             type="date"
             name="publishdate"
             value={data.publishdate}
-            format='Y-m-d'
             onChange={(e) => setData({ ...data, publishdate: e.target.value })}
           />
         </div>

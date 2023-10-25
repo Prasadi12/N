@@ -18,7 +18,7 @@ const Home = () => {
 
   const handleLogout = () => {
     axios
-      .post("http://localhost:5000/auth/userlogout", {
+      .post("https://nes-backend.onrender.com/auth/userlogout", {
         headers: {
           token: Token,
         },

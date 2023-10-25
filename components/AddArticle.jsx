@@ -16,7 +16,7 @@ const Addarticle = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/article/createarticle", data, {
+      .post("https://nes-backend.onrender.com/article/createarticle", data, {
         headers: {
           token: Token,
           "Content-Type": "multipart/form-data",

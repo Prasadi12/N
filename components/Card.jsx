@@ -7,7 +7,7 @@ const Card = () => {
 
   useEffect(() => {
     axios
-      .get("https://nes-backend.onrender.com/")
+      .get("https://nes-backend.onrender.com/article/")
       .then((res) => {
         setData(res.data);
       })
@@ -26,7 +26,7 @@ console.log('data',data)
             <div>
               <div className="font-bold text-xl mb-4">{article.title}</div>
               <Image
-                src={"http://localhost:5000/" + "images/" + article.image}
+                src={`/images/${article.image}`}
                 alt=""
                 width={500}
                 height={500}

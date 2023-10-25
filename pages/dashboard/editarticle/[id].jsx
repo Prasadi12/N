@@ -27,7 +27,7 @@ const Editarticle = () => {
     const Token = localStorage.getItem('token');
     if (id) {
       axios
-        .get("http://localhost:5000/article/getarticle/" + id, {
+        .get("https://nes-backend.onrender.com/article/getarticle/" + id, {
           headers: {
             token: Token,
           },
@@ -50,7 +50,7 @@ const Editarticle = () => {
     event.preventDefault();
     console.log(id);
     axios
-      .put(`http://localhost:5000/article/updatearticle/${id}`, data, {
+      .put(`https://nes-backend.onrender.com/article/updatearticle/${id}`, data, {
         headers: {
           token: Token,
           "Content-Type": "multipart/form-data",
@@ -67,7 +67,7 @@ const Editarticle = () => {
   const handleLogout = () => {
     const Token = localStorage.getItem('token');
     axios
-      .post("http://localhost:5000/auth/userlogout", {
+      .post("https://nes-backend.onrender.com/auth/userlogout", {
         headers: {
           token: Token,
         },
@@ -161,7 +161,7 @@ const Editarticle = () => {
                   Image
                 </label>
                 <Image
-                  src={"http://localhost:5000/images/" + data.image}
+                  src={`/images/${data.image}`}
                   width={500}
                   height={500}
                 />

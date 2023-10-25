@@ -15,7 +15,7 @@ const DashboardContent = () => {
   useEffect(() => {
     const Token = localStorage.getItem('token');
     axios
-      .get("http://localhost:5000/article/", {
+      .get("https://nes-backend.onrender.com/article/", {
         headers: {
           token: Token,
         },
@@ -34,7 +34,7 @@ const DashboardContent = () => {
     const Token = localStorage.getItem('token');
     console.log(id);
     axios
-      .delete(`http://localhost:5000/article/deletearticle/${id}`, {
+      .delete(`https://nes-backend.onrender.com/article/deletearticle/${id}`, {
         headers: {
           token: Token,
         },
@@ -94,7 +94,7 @@ const DashboardContent = () => {
               <td>
                 {
                   <Image
-                    src={"http://localhost:5000/" + "images/" + article.image}
+                    src={`/images/${article.image}`}
                     width={100}
                     height={100}
                     alt=""

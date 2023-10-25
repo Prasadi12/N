@@ -7,7 +7,7 @@ const HomeCard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/article/")
+      .get("https://nes-backend.onrender.com/article/")
       .then((res) => {
         setData(res.data);
       })
@@ -25,7 +25,7 @@ const HomeCard = () => {
             <div>
               <div className="font-bold text-xl mb-4">{article.title}</div>
               <Image
-                src={"http://localhost:5000/" + "images/" + article.image}
+                src={`/images/${article.image}`}
                 alt=""
                 width={500}
                 height={500}

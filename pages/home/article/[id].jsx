@@ -18,7 +18,7 @@ const Article = () => {
     const Token = localStorage.getItem('token');
     if (id) {
       axios
-        .get("http://localhost:5000/article/getarticle/" + id, {
+        .get("https://nes-backend.onrender.com/article/getarticle/" + id, {
           headers: {
             token: Token,
           },
@@ -37,7 +37,7 @@ const Article = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/article/createcomment", test)
+      .post("https://nes-backend.onrender.com/article/createcomment", test)
       .then((res) => {
         console.log(res);
         alert("Comment send successfully...!!");
@@ -48,7 +48,7 @@ const Article = () => {
 
   const handleLogout = () => {
     axios
-      .post("http://localhost:5000/auth/userlogout", {
+      .post("https://nes-backend.onrender.com/auth/userlogout", {
         headers: {
           token: Token,
         },
@@ -95,7 +95,7 @@ const Article = () => {
           
           <div className="mt-5 flex justify-center">
             <Image
-              src={"http://localhost:5000/" + "images/" + data.image}
+              src={`/images/${data.image}`}
               alt=""
               width={500}
               height={500}

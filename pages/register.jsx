@@ -16,7 +16,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/auth/createuser", data)
+      .post("https://nes-backend.onrender.com/auth/createuser", data)
       .then((res) => {
         console.log(res);
         alert("Registration successfully...!!");

@@ -76,13 +76,8 @@ const Article = () => {
       <div className="flex-1">
       <div className="flex flex-col py-2 mt-20">
         <main className="flex flex-col w-full flex-1 px-20">
-          <h1 className="text-3xl justify-center font-bold">{data.title}</h1>
-          <p className="text-xl justify-start font-bold">
-            Author: {data.authorname}
-          </p>
-          <p className="text-xl font-bold">
-            Published Data :{data.publishdate}
-          </p>
+          <h1 className="text-3xl flex justify-center font-bold">{data.title}</h1>
+          
           <div className="mt-5 flex justify-center">
             <Image
               src={"http://localhost:5000/" + "images/" + data.image}
@@ -91,11 +86,17 @@ const Article = () => {
               height={500}
             />
           </div>
-          <div className="mt-5 text-left max-w-2xl">
-            <p className="text-xl">{data.content}</p>
+          <div className="mt-5 mb-5 flex justify-center">
+            <p className="text-xl text-justify">{data.content}</p>
           </div>
+          <p className="text-xl justify-start font-bold">
+            Author: {data.authorname}
+          </p>
+          <p className="text-xl font-bold">
+            Published Data :{data.publishdate}
+          </p>
 
-          <div className="mt-8 max-w-md">
+          <div className="mt-8  flex justify-center">
             <form onSubmit={handleSubmit} className="flex items-center">
               <input
                 type="text"
@@ -115,9 +116,7 @@ const Article = () => {
           </div>
         </main>
       </div>
-      <footer className="bg-teal-600 text-white text-center py-4 absolute bottom-0 w-full">
-      © 2023 All rights reserved.
-      </footer>
+      <Footer/>
     </div>
     </div>
   );

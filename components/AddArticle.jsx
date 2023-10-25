@@ -53,6 +53,7 @@ const Addarticle = () => {
               id="title"
               type="text"
               name="title"
+              autoComplete="off"
               required
               value={data.title}
               onChange={(e) => setData({ ...data, title: e.target.value })}
@@ -88,6 +89,7 @@ const Addarticle = () => {
               rows={5}
               required
               name="description"
+              autoComplete="off"
               value={data.description}
               onChange={(e) =>
                 setData({ ...data, description: e.target.value })
@@ -110,6 +112,7 @@ const Addarticle = () => {
               name="content"
               rows={10}
               required
+              autoComplete="off"
               value={data.content}
               onChange={(e) => setData({ ...data, content: e.target.value })}
               placeholder="Enter content"
@@ -126,6 +129,7 @@ const Addarticle = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="authorname"
               type="text"
+              autoComplete="off"
               name="authorname"
               required
               value={data.authorname}

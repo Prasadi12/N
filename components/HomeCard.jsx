@@ -30,7 +30,7 @@ const HomeCard = () => {
                 width={500}
                 height={500}
               />
-              <p className="text-gray-700 text-base">{article.description}</p>
+              <p className="text-gray-700 text-base mt-2">{article.description}</p>
             </div>
             <div className="mt-4">
               <a

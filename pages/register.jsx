@@ -50,6 +50,7 @@ const Register = () => {
               id="name"
               type="text"
               name="name"
+              autoComplete="off"
               required
               onChange={(e) => setData({ ...data, name: e.target.value })}
               placeholder="Enter your name"
@@ -67,6 +68,7 @@ const Register = () => {
               id="age"
               type="text"
               name="age"
+              autoComplete="off"
               required
               onChange={(e) => setData({ ...data, age: e.target.value })}
               placeholder="Enter your age"
@@ -84,6 +86,7 @@ const Register = () => {
               id="role"
               type="text"
               name="role"
+              autoComplete="off"
               required
               onChange={(e) => setData({ ...data, role: e.target.value })}
               placeholder="Enter your role"
@@ -101,6 +104,7 @@ const Register = () => {
               id="username"
               type="text"
               name="username"
+              autoComplete="off"
               required
               onChange={(e) => setData({ ...data, username: e.target.value })}
               placeholder="Enter your username"
@@ -118,6 +122,7 @@ const Register = () => {
               id="password"
               type="password"
               name="password"
+              autoComplete="off"
               required
               onChange={(e) => setData({ ...data, password: e.target.value })}
               placeholder="*********"

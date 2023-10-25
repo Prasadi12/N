@@ -75,10 +75,10 @@ const Article = () => {
           <Link href="/home" className="block mt-4 text-teal-200 hover:text-white mr-4">
             Home
           </Link>
-          <Link href="/about" className="block mt-4 text-teal-200 hover:text-white mr-4">
+          <Link href="/home" className="block mt-4 text-teal-200 hover:text-white mr-4">
             About
           </Link>
-          <Link href="/contact" className="block mt-4 text-teal-200 hover:text-white mr-4">
+          <Link href="/home" className="block mt-4 text-teal-200 hover:text-white mr-4">
             Contact
           </Link>
           <button onClick={handleLogout} className="block mt-4 text-teal-200 hover:text-white">
@@ -116,6 +116,7 @@ const Article = () => {
               <input
                 type="text"
                 name="comment"
+                autoComplete="off"
                 required
                 placeholder="Write a comment..."
                 onChange={(e) => setTest({ ...test, comment: e.target.value })}

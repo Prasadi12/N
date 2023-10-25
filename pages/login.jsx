@@ -54,6 +54,7 @@ const Login = () => {
               id="username"
               type="text"
               name="username"
+              autoComplete="off"
               required
               onChange={(e) =>
                 setValues({ ...values, username: e.target.value })
@@ -73,6 +74,7 @@ const Login = () => {
               id="password"
               type="password"
               name="password"
+              autoComplete="off"
               required
               onChange={(e) =>
                 setValues({ ...values, password: e.target.value })

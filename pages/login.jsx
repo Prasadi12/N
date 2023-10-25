@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <div>
       <NavBar />
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center mt-20">
         <form
           onSubmit={handleSubmit}
           className=" bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/3 mt-20"

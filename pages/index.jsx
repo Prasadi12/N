@@ -10,7 +10,7 @@ const Home = () => {
       <div>
         <h1 className="text-3xl font-bold text-center mt-5">Recent Articles</h1>
       </div>
-      <div className="mx-10">
+      <div className="mx-10 my-20">
         <Card />
       </div>
       <Footer />

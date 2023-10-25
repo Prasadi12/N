@@ -22,7 +22,10 @@ const Register = () => {
         alert("Registration successfully...!!");
         router.push("/login");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+      console.log(err)
+      alert("Wrong details, check the feilds again...!!");
+    });
   };
   return (
     <div>

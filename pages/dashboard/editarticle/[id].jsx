@@ -18,12 +18,13 @@ const Editarticle = () => {
     image: null,
     publishdate: "",
   });
+  const Token = '';
 
   const router = useRouter();
   const { id } = router.query;
-  const Token = localStorage.getItem('token');
 
   useEffect(() => {
+    const Token = localStorage.getItem('token');
     if (id) {
       axios
         .get("http://localhost:5000/article/getarticle/" + id, {
@@ -45,6 +46,7 @@ const Editarticle = () => {
   }, [id]);
 
   const handleSubmit = (event) => {
+    const Token = localStorage.getItem('token');
     event.preventDefault();
     console.log(id);
     axios
@@ -63,6 +65,7 @@ const Editarticle = () => {
   };
 
   const handleLogout = () => {
+    const Token = localStorage.getItem('token');
     axios
       .post("http://localhost:5000/auth/userlogout", {
         headers: {

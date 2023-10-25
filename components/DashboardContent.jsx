@@ -13,9 +13,17 @@ const DashboardContent = () => {
   const { id } = router.query;
 
   useEffect(() => {
+    const Token = localStorage.getItem('token');
     axios
-      .get("http://localhost:5000/article/")
+      .get("http://localhost:5000/article/", {
+        headers: {
+          token: Token,
+        },
+      })
       .then((res) => {
+        if (!Token) {
+          router.push('/') 
+        }
         console.log(res);
         setData(res.data);
       })
@@ -23,9 +31,14 @@ const DashboardContent = () => {
   }, [id]);
 
   const handleDelete = (id) => {
+    const Token = localStorage.getItem('token');
     console.log(id);
     axios
-      .delete(`http://localhost:5000/article/deletearticle/${id}`)
+      .delete(`http://localhost:5000/article/deletearticle/${id}`, {
+        headers: {
+          token: Token,
+        },
+      })
       .then((res) => {
         console.log(res);
         alert("Record deleted successfully");

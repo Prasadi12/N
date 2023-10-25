@@ -21,12 +21,21 @@ const Showarticle = () => {
 
   const router = useRouter();
   const { id } = router.query;
+  const Token = '';
 
   useEffect(() => {
+    const Token = localStorage.getItem('token');
     if (id) {
       axios
-        .get("http://localhost:5000/article/getarticle/" + id)
+        .get("http://localhost:5000/article/getarticle/" + id, {
+          headers: {
+            token: Token,
+          },
+        })
         .then((res) => {
+          if (!Token) {
+            router.push('/') 
+          }
           console.log(res);
           setData(res.data);
         })
@@ -35,6 +44,21 @@ const Showarticle = () => {
         });
     }
   }, [id]);
+
+  const handleLogout = () => {
+    axios
+      .post("http://localhost:5000/auth/userlogout", {
+        headers: {
+          token: Token,
+        },
+      })
+      .then((res) => {
+        localStorage.removeItem('token');
+        alert("Logout successfully...!!");
+        router.push("/");
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="bg-gray-200 w-screen min-h-screen">
@@ -73,7 +97,10 @@ const Showarticle = () => {
                 </div>
               </ul>
             </li>
-            <li className="flex justify-start items-center hover:bg-blue-200 hover:text-blue-800 rounded-xl p-2 cursor-pointer">
+            <li
+              onClick={handleLogout}
+              className="flex justify-start items-center hover:bg-blue-200 hover:text-blue-800 rounded-xl p-2 cursor-pointer"
+            >
               <BiLogOutCircle className="mr-2" />
               <h3 className="flex-1 font-semibold text-lg">Logout</h3>
             </li>

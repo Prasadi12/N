@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import MainHeader from "./MainHeader";
@@ -33,11 +33,24 @@ const MainLayout = ({ children }) => {
       return <Addarticle />;
     }
   };
+  const Token = '';
+
+  useEffect(()=>{
+    const Token = localStorage.getItem('token');
+    if (!Token) {
+      router.push('/') 
+    }
+  },[])
 
   const handleLogout = () => {
     axios
-      .post("http://localhost:5000/auth/userlogout")
+      .post("http://localhost:5000/auth/userlogout", {
+        headers: {
+          token: Token,
+        },
+      })
       .then((res) => {
+        localStorage.removeItem('token');
         alert("Logout successfully...!!");
         router.push("/");
       })

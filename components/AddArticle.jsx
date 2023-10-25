@@ -11,12 +11,14 @@ const Addarticle = () => {
     image: null,
     publishdate: "",
   });
+  const Token = localStorage.getItem('token');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:5000/article/createarticle", data, {
         headers: {
+          token: Token,
           "Content-Type": "multipart/form-data",
         },
       })

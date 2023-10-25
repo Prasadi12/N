@@ -21,12 +21,20 @@ const Editarticle = () => {
 
   const router = useRouter();
   const { id } = router.query;
+  const Token = localStorage.getItem('token');
 
   useEffect(() => {
     if (id) {
       axios
-        .get("http://localhost:5000/article/getarticle/" + id)
+        .get("http://localhost:5000/article/getarticle/" + id, {
+          headers: {
+            token: Token,
+          },
+        })
         .then((res) => {
+          if (!Token) {
+            router.push('/') 
+          }
           console.log(res);
           setData(res.data);
         })
@@ -42,6 +50,7 @@ const Editarticle = () => {
     axios
       .put(`http://localhost:5000/article/updatearticle/${id}`, data, {
         headers: {
+          token: Token,
           "Content-Type": "multipart/form-data",
         },
       })
@@ -49,6 +58,21 @@ const Editarticle = () => {
         console.log(res);
         alert("Record updated successfully...!!");
         router.push("/dashboard");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleLogout = () => {
+    axios
+      .post("http://localhost:5000/auth/userlogout", {
+        headers: {
+          token: Token,
+        },
+      })
+      .then((res) => {
+        localStorage.removeItem('token');
+        alert("Logout successfully...!!");
+        router.push("/");
       })
       .catch((err) => console.log(err));
   };
@@ -90,7 +114,10 @@ const Editarticle = () => {
                 </div>
               </ul>
             </li>
-            <li className="flex justify-start items-center hover:bg-blue-200 hover:text-blue-800 rounded-xl p-2 cursor-pointer">
+            <li
+              onClick={handleLogout}
+              className="flex justify-start items-center hover:bg-blue-200 hover:text-blue-800 rounded-xl p-2 cursor-pointer"
+            >
               <BiLogOutCircle className="mr-2" />
               <h3 className="flex-1 font-semibold text-lg">Logout</h3>
             </li>
@@ -140,6 +167,7 @@ const Editarticle = () => {
                   id="image"
                   type="file"
                   name="image"
+                  alt=""
                   onChange={(e) =>
                     setData({ ...data, image: e.target.files[0] })
                   }

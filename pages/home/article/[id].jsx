@@ -11,6 +11,7 @@ const Article = () => {
 
   const router = useRouter();
   const { id } = router.query;
+  const Token = '';
   
 
   useEffect(() => {
@@ -25,6 +26,9 @@ const Article = () => {
         .then((res) => {
           console.log(res);
           setData(res.data);
+          if (!Token) {
+            router.push('/') 
+          }
         })
         .catch((err) => console.log(err));
     }
@@ -44,8 +48,13 @@ const Article = () => {
 
   const handleLogout = () => {
     axios
-      .post("http://localhost:5000/auth/userlogout")
+      .post("http://localhost:5000/auth/userlogout", {
+        headers: {
+          token: Token,
+        },
+      })
       .then((res) => {
+        localStorage.removeItem('token');
         alert("Logout successfully...!!");
         router.push("/");
       })

@@ -7,13 +7,14 @@ const Card = () => {
 
   useEffect(() => {
     axios
-      .get("https://nes-backend.onrender.com/article/all")
+      .get("https://nes-backend.onrender.com/")
       .then((res) => {
         setData(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
+console.log('data',data)
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10">
       {data.map((article) => (

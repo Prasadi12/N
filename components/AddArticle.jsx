@@ -79,10 +79,11 @@ const Addarticle = () => {
             >
               Description
             </label>
-            <input
+            <textarea
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="description"
               type="text"
+              rows={5}
               required
               name="description"
               value={data.description}
@@ -100,11 +101,12 @@ const Addarticle = () => {
               Content
             </label>
             {/* <RichTextEditor  theme="snow" /> */}
-            <input
+            <textarea
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="content"
               type="text"
               name="content"
+              rows={10}
               required
               value={data.content}
               onChange={(e) => setData({ ...data, content: e.target.value })}

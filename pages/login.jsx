@@ -17,6 +17,7 @@ const Login = () => {
       .post("http://localhost:5000/auth/userlogin", values)
       .then((res) => {
         console.log(res);
+        localStorage.setItem('token',res.data.token)
         if (res.data.role == "admin") {
           alert("Admin successfully login...!!");
           router.push("/dashboard");

@@ -152,11 +152,12 @@ const Editarticle = () => {
                 >
                   Description
                 </label>
-                <input
+                <textarea
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="description"
-                  type="text"
+                  type="textarea"
                   name="description"
+                  rows={5}
                   required
                   onChange={(e) =>
                     setData({ ...data, description: e.target.value })
@@ -172,11 +173,12 @@ const Editarticle = () => {
                 >
                   Content
                 </label>
-                <input
+                <textarea
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="content"
                   type="text"
                   name="content"
+                  rows={10}
                   required
                   onChange={(e) =>
                     setData({ ...data, content: e.target.value })

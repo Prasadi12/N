@@ -90,16 +90,9 @@ const Showarticle = () => {
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="title"
                 >
-                  Title
+                  Title:
                 </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="title"
-                  type="text"
-                  readOnly
-                  value={data.title}
-                  placeholder="Enter title"
-                />
+                <p className="mt-2">{data.title}</p>
               </div>
               <div className="mb-4">
                 <label
@@ -119,67 +112,36 @@ const Showarticle = () => {
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="description"
                 >
-                  Description
+                  Description :
                 </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="description"
-                  type="text"
-                  readOnly
-                  value={data.description}
-                  placeholder="Enter description"
-                />
+                <p className="mt-2 text-justify">{data.description}</p>
               </div>
               <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="content"
                 >
-                  Content
+                  Content :
                 </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="content"
-                  type="text"
-                  readOnly
-                  value={data.content}
-                  placeholder="Enter content"
-                />
+                <p className="mt-2 text-justify">{data.content}</p>
               </div>
               <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="authorname"
                 >
-                  Author Name
+                  Author Name :
                 </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="authorname"
-                  type="text"
-                  readOnly
-                  value={data.authorname}
-                  placeholder="Enter authorname"
-                />
+                <p className="mt-2">{data.authorname}</p>
               </div>
               <div className="mb-6">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="publishdate"
                 >
-                  Publish Date
+                  Publish Date :
                 </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                  id="publishdate"
-                  type="text"
-                  readOnly
-                  name="publishdate"
-                  value={data.publishdate}
-                  onChange={(e) =>
-                    setData({ ...data, publishdate: e.target.value })
-                  }
-                />
+                <p className="mt-2">{data.publishdate}</p>
               </div>
             </form>
           </div>

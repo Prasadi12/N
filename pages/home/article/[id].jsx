@@ -11,11 +11,17 @@ const Article = () => {
 
   const router = useRouter();
   const { id } = router.query;
+  
 
   useEffect(() => {
+    const Token = localStorage.getItem('token');
     if (id) {
       axios
-        .get("http://localhost:5000/article/getarticle/" + id)
+        .get("http://localhost:5000/article/getarticle/" + id, {
+          headers: {
+            token: Token,
+          },
+        })
         .then((res) => {
           console.log(res);
           setData(res.data);

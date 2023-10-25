@@ -1,12 +1,8 @@
-import MainLayout from '@/components/MainLayout'
-import React from 'react'
-
+import MainLayout from "@/components/MainLayout";
+import React from "react";
 
 const dashboard = () => {
+  return <MainLayout />;
+};
 
-  return (
-    <MainLayout/>           
-  )
-}
-
-export default dashboard
+export default dashboard;

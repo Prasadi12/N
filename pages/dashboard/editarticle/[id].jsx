@@ -1,13 +1,13 @@
 import MainHeader from "@/components/MainHeader";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import axios from "axios";
+import { useRouter } from "next/router";
 import { GrArticle } from "react-icons/gr";
 import { FaAngleRight } from "react-icons/fa";
 import { BiLogOutCircle, BiAddToQueue } from "react-icons/bi";
 import { RxDashboard } from "react-icons/rx";
-import Link from "next/link";
-import axios from "axios";
-import { useRouter } from "next/router";
 
 const Editarticle = () => {
   const [data, setData] = useState({
@@ -16,7 +16,7 @@ const Editarticle = () => {
     content: "",
     authorname: "",
     image: null,
-    publishdate: '',
+    publishdate: "",
   });
 
   const router = useRouter();
@@ -24,19 +24,17 @@ const Editarticle = () => {
 
   useEffect(() => {
     if (id) {
-    axios
-      .get("http://localhost:5000/article/getarticle/" + id)
-      .then((res) => {
-        console.log(res);
-        setData(res.data);
-        
-      })
-      .catch((err) => {
-        console.log(err)
-      });
+      axios
+        .get("http://localhost:5000/article/getarticle/" + id)
+        .then((res) => {
+          console.log(res);
+          setData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [id]);
-  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -49,9 +47,8 @@ const Editarticle = () => {
       })
       .then((res) => {
         console.log(res);
-        alert('Record updated successfully...!!')
-        router.push('/dashboard');
-      
+        alert("Record updated successfully...!!");
+        router.push("/dashboard");
       })
       .catch((err) => console.log(err));
   };
@@ -127,21 +124,27 @@ const Editarticle = () => {
                 />
               </div>
               <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="image"
-          >
-            Image
-          </label>
-          <Image src={'http://localhost:5000/images/'+data.image} width={500} height={500}/>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="image"
-            type="file"
-            name="image"
-            onChange={(e) => setData({ ...data, image: e.target.files[0] })}
-          />
-        </div>
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="image"
+                >
+                  Image
+                </label>
+                <Image
+                  src={"http://localhost:5000/images/" + data.image}
+                  width={500}
+                  height={500}
+                />
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="image"
+                  type="file"
+                  name="image"
+                  onChange={(e) =>
+                    setData({ ...data, image: e.target.files[0] })
+                  }
+                />
+              </div>
               <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
@@ -203,21 +206,23 @@ const Editarticle = () => {
                 />
               </div>
               <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="publishdate"
-          >
-            Publish Date
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            id="publishdate"
-            type="date"
-            name="publishdate"
-            value={data.publishdate}
-            onChange={(e) => setData({ ...data, publishdate: e.target.value })}
-          />
-        </div>
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="publishdate"
+                >
+                  Publish Date
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                  id="publishdate"
+                  type="date"
+                  name="publishdate"
+                  value={data.publishdate}
+                  onChange={(e) =>
+                    setData({ ...data, publishdate: e.target.value })
+                  }
+                />
+              </div>
               <div className="flex items-center justify-between">
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

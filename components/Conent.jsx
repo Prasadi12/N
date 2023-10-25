@@ -1,26 +1,26 @@
-import { useState, useEffect, useRef } from 'react';
-import 'quill/dist/quill.snow.css';
-import axios from 'axios';
+import { useState, useEffect, useRef } from "react";
+import "quill/dist/quill.snow.css";
+import axios from "axios";
 
 const RichTextEditor = ({ articleId }) => {
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   const quillRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const Quill = require('quill');
+    if (typeof window !== "undefined") {
+      const Quill = require("quill");
       const editor = new Quill(quillRef.current, {
-        theme: 'snow',
+        theme: "snow",
         modules: {
           toolbar: [
-            ['bold', 'italic', 'underline', 'strike'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            ['link', 'image'],
-            ['clean'],
+            ["bold", "italic", "underline", "strike"],
+            [{ list: "ordered" }, { list: "bullet" }],
+            ["link", "image"],
+            ["clean"],
           ],
         },
       });
-      editor.on('text-change', () => {
+      editor.on("text-change", () => {
         setContent(editor.root.innerHTML);
       });
     }
@@ -29,9 +29,9 @@ const RichTextEditor = ({ articleId }) => {
   const saveContent = async () => {
     try {
       await axios.put(`/api/articles/${articleId}`, { content });
-      console.log('Content saved successfully');
+      console.log("Content saved successfully");
     } catch (error) {
-      console.error('Error saving content:', error);
+      console.error("Error saving content:", error);
     }
   };
 

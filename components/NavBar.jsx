@@ -5,7 +5,9 @@ const NavBar = () => {
     <nav className="flex items-center justify-between flex-wrap bg-teal-600 p-6">
       <div className="justify-between flex">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <span className="font-semibold border rounded-2xl text-xl tracking-tight">NEWS-APP</span>
+          <span className="font-semibold border rounded-2xl text-xl tracking-tight">
+            NEWS-APP
+          </span>
         </div>
         <div className="w-full justify-end flex">
           <div className="text-lg lg:flex-grow">
@@ -37,41 +39,6 @@ const NavBar = () => {
         </div>
       </div>
     </nav>
-//     <nav className="flex items-center justify-between flex-wrap bg-teal-600 p-6">
-//          <div className="flex items-center flex-shrink-0 text-white mr-6 mt-2">
-//          <span className="font-semibold border rounded-2xl text-xl tracking-tight">NEWS-APP</span>
-//         </div>
-//   <div className="w-full flex justify-end">
-//     <div className="text-lg">
-//       <Link
-//         href="/"
-//         className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-//       >
-//         Home
-//       </Link>
-//       <Link
-//         href="/about"
-//         className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-//       >
-//         About
-//       </Link>
-//       <Link
-//         href="/contact"
-//         className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-//       >
-//         Contact
-//       </Link>
-//       <Link
-//         href="/login"
-//         className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
-//       >
-//         Login
-//       </Link>
-//     </div>
-//   </div>
-// </nav>
-
-
   );
 };
 

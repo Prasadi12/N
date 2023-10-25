@@ -7,7 +7,7 @@ const Card = () => {
 
   useEffect(() => {
     axios
-      .get("https://nes-backend.onrender.com/article/")
+      .get("https://nes-backend.onrender.com/article/all")
       .then((res) => {
         setData(res.data);
       })

@@ -129,7 +129,7 @@ const Showarticle = () => {
                   Image
                 </label>
                 <Image
-                  src={`/images/${data.image}`}
+                  src={`https://nes-backend.onrender.com/images/${article.image}`}
                   width={500}
                   height={500}
                 />

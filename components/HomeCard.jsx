@@ -25,7 +25,7 @@ const HomeCard = () => {
             <div>
               <div className="font-bold text-xl mb-4">{article.title}</div>
               <Image
-                src={`/images/${article.image}`}
+                src={`https://nes-backend.onrender.com/images/${article.image}`}
                 alt=""
                 width={500}
                 height={500}

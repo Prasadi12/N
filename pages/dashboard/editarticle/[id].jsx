@@ -161,7 +161,7 @@ const Editarticle = () => {
                   Image
                 </label>
                 <Image
-                  src={`https://nes-backend.onrender.com/images/${article.image}`}
+                  src={`https://nes-backend.onrender.com/images/${data.image}`}
                   width={500}
                   height={500}
                 />

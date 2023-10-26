@@ -95,7 +95,7 @@ const Article = () => {
           
           <div className="mt-5 flex justify-center">
             <Image
-              src={`https://nes-backend.onrender.com/images/${article.image}`}
+              src={`https://nes-backend.onrender.com/images/${data.image}`}
               alt=""
               width={500}
               height={500}

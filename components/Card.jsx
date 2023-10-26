@@ -26,7 +26,9 @@ console.log('data',data)
             <div>
               <div className="font-bold text-xl mb-4">{article.title}</div>
               <Image
-                src={`/images/${article.image}`}
+                // src={`/images/${article.image}`}
+                src={`https://nes-backend.onrender.com/images/${article.image}`}
+                // src={'http://localhost:5000/'+'images/'+ article.image}
                 alt=""
                 width={500}
                 height={500}

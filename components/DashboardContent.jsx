@@ -94,7 +94,7 @@ const DashboardContent = () => {
               <td>
                 {
                   <Image
-                  src={`https://nes-backend.onrender.com/images/${data.image}`}
+                  src={`https://nes-backend.onrender.com/images/${article.image}`}
                     width={100}
                     height={100}
                     alt=""

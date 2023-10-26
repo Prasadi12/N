@@ -138,7 +138,7 @@ const Register = () => {
           </div>
         </form>
       </div>
-      <footer className="bg-teal-600 text-white text-center py-4 absolute bottom-0 w-full">
+      <footer className="bg-teal-600 text-white text-center py-4 absolute w-full mt-5">
         © 2023 All rights reserved.
       </footer>
     </div>

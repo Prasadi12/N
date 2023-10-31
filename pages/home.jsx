@@ -24,8 +24,8 @@ const Home = () => {
         },
       })
       .then((res) => {
-        // localStorage.removeItem('token');
-        // alert("Logout successfully...!!");
+        localStorage.removeItem('token');
+        alert("Logout successfully...!!");
         router.push("/");
       })
       .catch((err) => console.log(err));

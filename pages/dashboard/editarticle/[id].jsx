@@ -87,14 +87,14 @@ const Editarticle = () => {
         <aside className="bg-white rounded-lg w-60 p-4">
           <ul>
             <li>
-              <div className="flex flex-col justify-start items-start hover:bg-blue-200 hover:text-blue-800 rounded-xl p-2 cursor-pointer">
+              {/* <div className="flex flex-col justify-start items-start hover:bg-blue-200 hover:text-blue-800 rounded-xl p-2 cursor-pointer">
                 <div className="flex flex-row justify-start items-center w-full">
                   <RxDashboard className="mr-2" />
                   <Link href="/dashboard">
                     <p className="flex-1 font-semibold text-lg">Dashboard</p>
                   </Link>
                 </div>
-              </div>
+              </div> */}
               <div className="flex flex-col justify-start items-start hover:bg-blue-200 hover:text-blue-800 rounded-xl p-2 cursor-pointer">
                 <div className="flex flex-row justify-start items-center w-full">
                   <GrArticle className="mr-2" />
